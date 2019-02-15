@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.0.BUILD-SNAPSHOT</version>
+		<version>2.0.8.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.newglobe</groupId>
@@ -19,14 +19,28 @@
 	</properties>
 
 	<dependencies>
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-activemq</artifactId> </dependency> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-data-redis</artifactId> 
-			</dependency> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-data-solr</artifactId> </dependency> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-mail</artifactId> 
-			</dependency> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-oauth2-client</artifactId> </dependency> <dependency> <groupId>org.springframework.boot</groupId> 
-			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId> </dependency> -->
-		<!-- oauth授权 -->
+		<!-- activemq消息队列 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+			<artifactId>spring-boot-starter-activemq</artifactId>
+		</dependency>
+		
+		<!--redis-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		
+		<!-- solr搜索引擎 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-solr</artifactId>
+		</dependency>
+		
+		<!-- email -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
 		<!-- web启动器 -->
@@ -44,7 +58,6 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.30</version>
 			<scope>runtime</scope>
 		</dependency>
 		<!-- druid数据源 -->
@@ -53,7 +66,6 @@
 			<artifactId>druid</artifactId>
 			<version>1.1.13</version>
 		</dependency>
-
 		<!-- 测试jar -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -82,7 +94,7 @@
 		</dependency>
 
 
-		<!-- DevTools 的坐标 -->
+		<!-- DevTools热部署 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
