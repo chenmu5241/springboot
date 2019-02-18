@@ -1,6 +1,8 @@
 package com.newglobe.model;
 
-public class SysRole  {
+import com.newglobe.model.vo.BaseModel;
+
+public class SysRole extends BaseModel {
 	
 	protected static final long serialVersionUID = 5172776809901424894L;
 

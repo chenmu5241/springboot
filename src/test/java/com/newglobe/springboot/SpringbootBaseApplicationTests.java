@@ -18,6 +18,8 @@ public class SpringbootBaseApplicationTests {
 	@Test
 	public void contextLoads() {
 		System.out.println(JSON.toJSONString(sysRoleService.selectList()));
+		sysRoleService.update();
+		System.out.println(sysRoleService.selectCount(null));
 	}
 
 }
