@@ -10,10 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan("com.newglobe.dao")//将项目中对应的mapper类的路径加进来就可以了
-public class SpringbootBaseApplication {
+public class App {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringbootBaseApplication.class, args);
+		SpringApplication.run(App.class, args);
 	}
 
 }
