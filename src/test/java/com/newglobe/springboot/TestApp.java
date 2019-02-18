@@ -7,19 +7,21 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageHelper;
 import com.newglobe.service.SysRoleService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringbootBaseApplicationTests {
+public class TestApp {
 	@Autowired
 	private SysRoleService sysRoleService;
 
 	@Test
 	public void contextLoads() {
+		PageHelper.startPage(2, 10);
 		System.out.println(JSON.toJSONString(sysRoleService.selectList()));
-		sysRoleService.update();
-		System.out.println(sysRoleService.selectCount(null));
+//		sysRoleService.update();
+//		System.out.println(sysRoleService.selectCount(null));
 	}
 
 }
