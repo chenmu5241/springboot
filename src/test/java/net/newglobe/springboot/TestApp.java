@@ -1,4 +1,4 @@
-package com.newglobe.springboot;
+package net.newglobe.springboot;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
-import com.newglobe.service.SysRoleService;
+import net.newglobe.service.SysRoleService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -19,7 +19,7 @@ public class TestApp {
 	@Test
 	public void contextLoads() {
 		PageHelper.startPage(2, 10);
-		System.out.println(JSON.toJSONString(sysRoleService.selectList()));
+		System.out.println(JSON.toJSONString(sysRoleService.selectAll()));
 //		sysRoleService.update();
 //		System.out.println(sysRoleService.selectCount(null));
 	}
