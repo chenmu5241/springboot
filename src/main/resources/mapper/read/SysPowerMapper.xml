@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.newglobe.dao.read.SysPowerDao" >
+  <resultMap id="BaseResultMap" type="net.newglobe.model.SysPower" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="LONGVARCHAR" />
+    <result column="layer" property="layer" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="BIGINT" />
+    <result column="is_show" property="isShow" jdbcType="INTEGER" />
+   	<result column="updator" property="updator" jdbcType="BIGINT" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="ext1" property="ext1" jdbcType="VARCHAR" />
+    <result column="ext2" property="ext2" jdbcType="VARCHAR" />
+    <result column="ext3" property="ext3" jdbcType="LONGVARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+   	<result column="account_id" property="accountId" jdbcType="BIGINT" />
+  </resultMap>
+  
+  <resultMap type="net.newglobe.model.SysPower" id="BaseResultMapAsso" extends="BaseResultMap">
+  	<!-- column多个参数java类属性=column -->
+  	<collection property="children" column="{parentId=id,status=status,isShow=is_show,accountId=account_id}" select="queryTree"></collection>
+  </resultMap>
+  
+  <resultMap type="net.newglobe.model.SysPower" id="BaseResultMapAsso1" extends="BaseResultMap">
+  	<!-- column多个参数java类属性=column -->
+  	<collection property="children" column="{parentId=id,status=status,isShow=is_show}" select="queryRootTree"></collection>
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    id, name, flag, sort, layer, url, type, parent_id, is_show,updator,update_time,creator,create_time, ext1, ext2,ext3, status
+  </sql>
+  
+  
+  <select id="getAccountPowers" parameterType="long" resultMap="BaseResultMap">
+			select p.*
+			  from sys_power p
+			 where p.id > 0
+               and p.parent_id=-1
+			   and p.status = 1
+			   and exists (select 1
+			          from sys_role_power rp, sys_account_role ar,sys_account su
+			         where ar.role_id = rp.role_id
+			           and rp.power_id = p.id 
+			           and su.id=ar.account_id
+			           and ar.account_id = #{value}
+			           and rp.status = 1
+			           and ar.status = 1
+			           and su.status=1
+			           )
+	</select>
+	
+  <select id="queryByRoleId" parameterType="long" resultMap="BaseResultMap">
+			SELECT
+				*
+			FROM
+				sys_power p
+			INNER JOIN sys_role_power rp ON p.id = rp.power_id
+			WHERE
+				p. STATUS = 1
+			AND rp.role_id = #{value}
+	</select>
+	
+  	<select id="selectMaxIdChildren" parameterType="net.newglobe.model.SysPower" resultType="long">
+  		select id from sys_power where parent_id=#{parentId} order by id desc limit 0,1
+	</select>
+	
+	<select id="queryTree"  parameterType="net.newglobe.model.SysPower" resultMap="BaseResultMapAsso">
+		select sp.*,sar.account_id from sys_power sp
+		INNER JOIN sys_role_power srp ON sp.id = srp.power_id
+		INNER JOIN sys_account_role sar on srp.role_id=sar.role_id
+		where 1=1
+		<if test="accountId != null">
+		and	sar.account_id = ${accountId}
+		</if>
+		<if test="status!=null">
+		and sp.status = ${status}
+		</if>
+		<if test="layer != null">
+		and sp.layer = ${layer}
+		</if>
+		<if test="parentId != null">
+		and sp.parent_id = ${parentId}
+		</if>
+		<if test="isShow != null">
+		and sp.is_show = ${isShow}
+		</if>
+		order by sp.sort
+	</select>
+	
+	<select id="queryRootTree"  parameterType="net.newglobe.model.SysPower" resultMap="BaseResultMapAsso1">
+		select sp.* from sys_power sp
+		where 1=1
+		<if test="status!=null">
+		and sp.status = ${status}
+		</if>
+		<if test="layer != null">
+		and sp.layer = ${layer}
+		</if>
+		<if test="parentId != null">
+		and sp.parent_id = ${parentId}
+		</if>
+		<if test="isShow != null">
+		and sp.is_show = ${isShow}
+		</if>
+		order by sp.sort
+	</select>
+ 
+</mapper>
