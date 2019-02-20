@@ -1,0 +1,5 @@
+15:47:28.917 [main] DEBUG selectAll - ==>  Preparing: SELECT id,creator,create_time,updator,update_time,status,ext1,ext2,ext3,key_name,key_value,conf_type,rw_value,description FROM settings_config 
+15:47:28.952 [main] DEBUG selectAll - ==> Parameters: 
+15:47:28.973 [main] DEBUG selectAll - <==      Total: 10
+15:47:32.321 [main] INFO  SchedulerFactoryBean - Starting Quartz Scheduler now
+15:47:32.337 [main] INFO  ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
