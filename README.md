@@ -13,10 +13,10 @@
 #整合redis
 #整合ehcache
 #email
+#国际化功能
 
 #solr
 #activemq
-#国际化功能
 
 #即时通信示例
 #整合activiti流程引擎，初步完成流程部署等功能
