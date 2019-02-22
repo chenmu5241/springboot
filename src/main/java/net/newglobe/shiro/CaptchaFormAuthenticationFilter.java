@@ -23,18 +23,18 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
 			return true;
 		}
 
-		// 页面输入的验证码
-		String randomcode = request.getParameter("randomcode");
-		// 从session中取出验证码
-		String validateCode = (String) session.getAttribute("randomcode");
-		if (randomcode != null && validateCode != null) {
-			if (!randomcode.equalsIgnoreCase(validateCode)) {
-				// randomCodeError表示验证码错误
-				request.setAttribute("shiroLoginFailure", "randomCodeError");
-				// 拒绝访问，不再校验账号和密码
-				return true;
-			}
-		}
+//		// 页面输入的验证码
+//		String randomcode = request.getParameter("randomcode");
+//		// 从session中取出验证码
+//		String validateCode = (String) session.getAttribute("randomcode");
+//		if (randomcode != null && validateCode != null) {
+//			if (!randomcode.equalsIgnoreCase(validateCode)) {
+//				// randomCodeError表示验证码错误
+//				request.setAttribute("shiroLoginFailure", "randomCodeError");
+//				// 拒绝访问，不再校验账号和密码
+//				return true;
+//			}
+//		}
 		return super.onAccessDenied(request, response, mappedValue);
 	}
 

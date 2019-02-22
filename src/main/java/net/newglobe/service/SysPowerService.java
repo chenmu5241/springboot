@@ -31,12 +31,10 @@ public class SysPowerService extends BaseService<SysPower, SysPowerDao> {
 		return sysPowerDao.selectMaxIdChildren(t);
 	}
 	
-	@Cacheable(value="powers")
 	public List<SysPower> selectTree(SysPower t){
 		return sysPowerDao.queryTree(t);
 	}
 	
-	@Cacheable(value="powers")
 	public List<SysPower> selectRootTree(SysPower t) {
 		return sysPowerDao.queryRootTree(t);
 	}

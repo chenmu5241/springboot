@@ -13,8 +13,8 @@
 #整合redis
 #整合ehcache
 #email
-#solr
 
+#solr
 #activemq
 #国际化功能
 
