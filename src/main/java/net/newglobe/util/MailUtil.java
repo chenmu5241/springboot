@@ -32,7 +32,7 @@ public class MailUtil {
 			// 1. 创建一封邮件
 			MimeMessage message = new MimeMessage(session);
 			// 2. From: 发件人
-			message.setFrom(new InternetAddress(sysConfig.getMailAccount(), "达丰爱建通", "UTF-8"));
+			message.setFrom(new InternetAddress(sysConfig.getMailAccount(), "熊先生", "UTF-8"));
 			// 3. To: 收件人（可以增加多个收件人、抄送、密送）
 			message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(receiveMail, "", "UTF-8"));
 			// 4. Subject: 邮件主题

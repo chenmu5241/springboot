@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,10 +31,12 @@ public class SysPowerService extends BaseService<SysPower, SysPowerDao> {
 		return sysPowerDao.selectMaxIdChildren(t);
 	}
 	
+	@Cacheable(value="powers")
 	public List<SysPower> selectTree(SysPower t){
 		return sysPowerDao.queryTree(t);
 	}
 	
+	@Cacheable(value="powers")
 	public List<SysPower> selectRootTree(SysPower t) {
 		return sysPowerDao.queryRootTree(t);
 	}

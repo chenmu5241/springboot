@@ -47,7 +47,7 @@ public class SysConfig {
 	
 	
 	//邮件发送服务器
-	@Value("${mail.account}")
+	@Value("${mail.username}")
 	private String mailAccount;
 	@Value("${mail.password}")
 	private String mailPassword;
