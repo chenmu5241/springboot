@@ -18,6 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.alibaba.fastjson.JSON;
 
 import net.newglobe.model.SysAccount;
+import net.newglobe.rabbit.Sender;
 import net.newglobe.service.SysRoleService;
 import net.newglobe.util.MailUtil;
 
@@ -82,6 +83,16 @@ public class TestApp {
 //			System.out.println(document);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+	
+	@Autowired
+	private Sender sender;
+	@Test
+	public void testRabbit() throws InterruptedException {
+		while (true) {
+			this.sender.send("你好，消息队列！");
+			Thread.sleep(2000L);
 		}
 	}
 }
