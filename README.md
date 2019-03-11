@@ -1,7 +1,5 @@
 # springboot
-
 #项目特点
-
 #springboot+mybatis+mysql
 #整合通用mapper
 #多数据源
@@ -15,6 +13,8 @@
 #email
 #国际化功能
 #solr
+#rabbitmq
+#服务器端字段有效性验证，@NotNull
 
 #activemq
 

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import net.newglobe.model.vo.Result;
 
 @ControllerAdvice
-public class MyControllerAdvice {
+public class GlobleExceptionFilter {
 
 	@ResponseBody
 	@ExceptionHandler(value = java.lang.Exception.class)
