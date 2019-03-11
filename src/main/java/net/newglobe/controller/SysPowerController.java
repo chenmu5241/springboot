@@ -5,14 +5,18 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 
 import net.newglobe.model.SysPower;
@@ -138,9 +142,13 @@ public class SysPowerController {
 
 	@RequestMapping("insert")
 	@ResponseBody
-	public Result insert(SysPower t) {
+	public Result insert(@Valid SysPower t) {
 		Result result = new Result();
 		try {
+/*			if(bindingResult.hasErrors()) {
+				List<FieldError> errors=bindingResult.getFieldErrors();
+				System.out.println(JSON.toJSONString(errors));
+			}*/
 			sysPowerService.insertNewPower(t);
 			result.setSuccess(true);
 		} catch (Exception e) {

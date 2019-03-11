@@ -3,6 +3,7 @@ package net.newglobe.model;
 import java.util.List;
 
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import net.newglobe.model.vo.BaseModel;
 
