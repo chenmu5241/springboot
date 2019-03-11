@@ -1,5 +1,8 @@
 package net.newglobe.springboot;
 
+import java.util.Date;
+
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.response.UpdateResponse;
 import org.apache.solr.common.SolrInputDocument;
@@ -88,6 +91,8 @@ public class TestApp {
 		while (true) {
 			this.sender.send("你好，消息队列！");
 			Thread.sleep(2000L);
+			Date date = new Date();
+			System.out.println("A:"+date.getTime());
 		}
 	}
 }
