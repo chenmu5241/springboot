@@ -25,11 +25,12 @@ public class I18nConfig implements WebMvcConfigurer {
 //		SessionLocaleResolver resolver = new SessionLocaleResolver();
 //		// 这里通过设置China.US可以进行中英文转化
 //		resolver.setDefaultLocale(Locale.US);
-		Locale locale = new Locale("zh", "cn");
+//		Locale locale = new Locale("zh", "cn");
 		
-		SessionLocaleResolver resolver = new SessionLocaleResolver();  
-//		resolver.setDefaultLocale(Locale.SIMPLIFIED_CHINESE);
-		resolver.setDefaultLocale(locale);  
+		SessionLocaleResolver resolver = new SessionLocaleResolver();
+//		resolver.setDefaultLocale(Locale.US);
+		resolver.setDefaultLocale(Locale.SIMPLIFIED_CHINESE);
+//		resolver.setDefaultLocale(locale);  
         return resolver;  
 	}
 
