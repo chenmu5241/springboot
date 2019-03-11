@@ -14,8 +14,8 @@
 #整合ehcache
 #email
 #国际化功能
-
 #solr
+
 #activemq
 
 #即时通信示例
