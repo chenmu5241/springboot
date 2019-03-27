@@ -17,6 +17,7 @@ public class HomeController {
 	@RequestMapping("home")
 	public String index(HttpServletRequest request) {
 		SysAccount sysAccount = (SysAccount) SecurityUtils.getSubject().getPrincipal();
+		System.out.println("hello world");
 		return "home";
 	}
 
