@@ -21,12 +21,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.github.pagehelper.PageHelper;
 
-import net.newglobe.model.SysAccount;
-import net.newglobe.model.SysPower;
-import net.newglobe.model.SysRole;
-import net.newglobe.service.SysAccountService;
-import net.newglobe.service.SysPowerService;
-import net.newglobe.service.SysRoleService;
+import net.newglobe.app.model.SysAccount;
+import net.newglobe.app.model.SysPower;
+import net.newglobe.app.model.SysRole;
+import net.newglobe.app.service.SysAccountService;
+import net.newglobe.app.service.SysPowerService;
+import net.newglobe.app.service.SysRoleService;
 import tk.mybatis.mapper.entity.Example;
 
 public class ShiroDbRealm extends AuthorizingRealm {

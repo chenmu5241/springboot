@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="net.newglobe.dao.read.SysAccountRoleDao" >
-  <resultMap id="BaseResultMap" type="net.newglobe.model.SysAccountRole" >
+<mapper namespace="net.newglobe.app.dao.read.SysAccountRoleDao" >
+  <resultMap id="BaseResultMap" type="net.newglobe.app.model.SysAccountRole" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="role_id" property="roleId" jdbcType="BIGINT" />
     <result column="account_id" property="accountId" jdbcType="BIGINT" />

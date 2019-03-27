@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import net.newglobe.model.vo.Result;
+import net.newglobe.app.model.vo.Result;
 
 @ControllerAdvice
 public class GlobleExceptionFilter {
@@ -17,6 +17,7 @@ public class GlobleExceptionFilter {
 	@ResponseBody
 	@ExceptionHandler(value = java.lang.Exception.class)
 	public Result myException(Exception ex) {
+		ex.printStackTrace();
 		Result result = new Result();
 		result.setSuccess(false);
 		result.setMessage("遇到异常");

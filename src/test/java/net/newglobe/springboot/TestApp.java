@@ -15,9 +15,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.alibaba.fastjson.JSON;
 
-import net.newglobe.model.SysAccount;
+import net.newglobe.app.model.SysAccount;
+import net.newglobe.app.service.SysRoleService;
 import net.newglobe.rabbit.Sender;
-import net.newglobe.service.SysRoleService;
 import net.newglobe.util.MailUtil;
 
 @RunWith(SpringRunner.class)

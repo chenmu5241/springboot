@@ -17,7 +17,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import tk.mybatis.spring.annotation.MapperScan;
 
 @Configuration
-@MapperScan(basePackages = "mapper", value = "net.newglobe.dao.write", sqlSessionTemplateRef = "sessionTemplate2")
+@MapperScan(basePackages = "mapper", value = "net.newglobe.app.dao.write", sqlSessionTemplateRef = "sessionTemplate2")
 public class DataSourceConfig2 {
 
 	@Bean(name = "dataSource2")

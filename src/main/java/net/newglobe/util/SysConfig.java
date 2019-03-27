@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import net.newglobe.service.SettingsConfigService;
+import net.newglobe.app.service.SettingsConfigService;
 
 @Component
 public class SysConfig {

@@ -10,8 +10,8 @@ import org.apache.shiro.web.filter.authz.AuthorizationFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import net.newglobe.model.SysAccount;
-import net.newglobe.model.SysPower;
+import net.newglobe.app.model.SysAccount;
+import net.newglobe.app.model.SysPower;
 
 public class URLFilter extends AuthorizationFilter {
 

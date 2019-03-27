@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="net.newglobe.dao.read.SysPowerDao" >
-  <resultMap id="BaseResultMap" type="net.newglobe.model.SysPower" >
+<mapper namespace="net.newglobe.app.dao.read.SysPowerDao" >
+  <resultMap id="BaseResultMap" type="net.newglobe.app.model.SysPower" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="flag" property="flag" jdbcType="VARCHAR" />
@@ -22,12 +22,12 @@
    	<result column="account_id" property="accountId" jdbcType="BIGINT" />
   </resultMap>
   
-  <resultMap type="net.newglobe.model.SysPower" id="BaseResultMapAsso" extends="BaseResultMap">
+  <resultMap type="net.newglobe.app.model.SysPower" id="BaseResultMapAsso" extends="BaseResultMap">
   	<!-- column多个参数java类属性=column -->
   	<collection property="children" column="{parentId=id,status=status,isShow=is_show,accountId=account_id}" select="queryTree"></collection>
   </resultMap>
   
-  <resultMap type="net.newglobe.model.SysPower" id="BaseResultMapAsso1" extends="BaseResultMap">
+  <resultMap type="net.newglobe.app.model.SysPower" id="BaseResultMapAsso1" extends="BaseResultMap">
   	<!-- column多个参数java类属性=column -->
   	<collection property="children" column="{parentId=id,status=status,isShow=is_show}" select="queryRootTree"></collection>
   </resultMap>
@@ -67,11 +67,11 @@
 			AND rp.role_id = #{value}
 	</select>
 	
-  	<select id="selectMaxIdChildren" parameterType="net.newglobe.model.SysPower" resultType="long">
+  	<select id="selectMaxIdChildren" parameterType="net.newglobe.app.model.SysPower" resultType="long">
   		select id from sys_power where parent_id=#{parentId} order by id desc limit 0,1
 	</select>
 	
-	<select id="queryTree"  parameterType="net.newglobe.model.SysPower" resultMap="BaseResultMapAsso">
+	<select id="queryTree"  parameterType="net.newglobe.app.model.SysPower" resultMap="BaseResultMapAsso">
 		select sp.*,sar.account_id from sys_power sp
 		INNER JOIN sys_role_power srp ON sp.id = srp.power_id
 		INNER JOIN sys_account_role sar on srp.role_id=sar.role_id
@@ -94,7 +94,7 @@
 		order by sp.sort
 	</select>
 	
-	<select id="queryRootTree"  parameterType="net.newglobe.model.SysPower" resultMap="BaseResultMapAsso1">
+	<select id="queryRootTree"  parameterType="net.newglobe.app.model.SysPower" resultMap="BaseResultMapAsso1">
 		select sp.* from sys_power sp
 		where 1=1
 		<if test="status!=null">
